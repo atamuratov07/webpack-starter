@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
-import webpack, { runtime } from 'webpack'
+import webpack from 'webpack'
 import type { Configuration as DevServerConfig } from 'webpack-dev-server'
 
 enum Mode {
@@ -26,6 +27,7 @@ const devServerConfig = (
 
 export default (env: EnvVars) => {
 	const isDev = env.mode === Mode.Dev
+	const isProd = env.mode === Mode.Prod
 
 	const config: webpack.Configuration = {
 		mode: env.mode ?? Mode.Dev,
@@ -39,7 +41,12 @@ export default (env: EnvVars) => {
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, 'public', 'index.html'),
 			}),
-		],
+			isProd &&
+				new MiniCssExtractPlugin({
+					filename: 'css/[name].[contenthash:8].css',
+					chunkFilename: 'css/[name].[contenthash:8].css',
+				}),
+		].filter(Boolean),
 		module: {
 			rules: [
 				{
@@ -71,6 +78,18 @@ export default (env: EnvVars) => {
 							isModule: true,
 						},
 					},
+				},
+				{
+					test: /\.css$/i,
+					use: [
+						{
+							loader: isDev
+								? 'style-loader'
+								: MiniCssExtractPlugin.loader,
+						},
+						{ loader: 'css-loader' },
+						{ loader: 'postcss-loader' },
+					],
 				},
 			],
 		},

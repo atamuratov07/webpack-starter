@@ -3,7 +3,8 @@
 	"packageManager": "yarn@4.5.0",
 	"private": true,
 	"scripts": {
-		"build": "webpack --env mode=production",
+		"build:prod": "webpack --env mode=production",
+		"build:dev": "webpack --env mode=development",
 		"dev": "webpack serve --env mode=development port=5000"
 	},
 	"devDependencies": {
@@ -13,8 +14,15 @@
 		"@types/react-dom": "^18",
 		"@types/webpack": "^5.28.5",
 		"@types/webpack-dev-server": "^4.7.2",
+		"autoprefixer": "^10.4.20",
+		"css-loader": "^7.1.2",
 		"html-webpack-plugin": "^5.6.0",
+		"mini-css-extract-plugin": "^2.9.1",
+		"postcss": "^8.4.47",
+		"postcss-loader": "^8.1.1",
+		"style-loader": "^4.0.0",
 		"swc-loader": "^0.2.6",
+		"tailwindcss": "^3.4.13",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.3",
 		"webpack": "^5.95.0",
