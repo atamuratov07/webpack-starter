@@ -1,6 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
-import webpack from 'webpack'
+import webpack, { runtime } from 'webpack'
 import type { Configuration as DevServerConfig } from 'webpack-dev-server'
 
 enum Mode {
@@ -29,7 +29,7 @@ export default (env: EnvVars) => {
 
 	const config: webpack.Configuration = {
 		mode: env.mode ?? Mode.Dev,
-		entry: path.resolve(__dirname, 'src', 'app', 'main.ts'),
+		entry: path.resolve(__dirname, 'src', 'app', 'main.tsx'),
 		output: {
 			path: path.resolve(__dirname, 'build'),
 			filename: '[name].[contenthash].js',
@@ -57,6 +57,11 @@ export default (env: EnvVars) => {
 								minify: {
 									compress: false,
 									mangle: false,
+								},
+								transform: {
+									react: {
+										runtime: 'automatic',
+									},
 								},
 							},
 							module: {
