@@ -1,13 +1,13 @@
-import { Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AdminPage } from '@/pages/admin'
 import { HomePage } from '@/pages/home'
-import { Layout } from './layout'
+import { AppLayout } from '@/shared/ui/layouts/app-layout'
+import { Suspense } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
+		element: <AppLayout />,
 		children: [
 			{
 				index: true,
