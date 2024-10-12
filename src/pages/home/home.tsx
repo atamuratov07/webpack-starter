@@ -1,6 +1,6 @@
-export function App({}: {}) {
+function HomePage({}: {}) {
 	return (
-		<div className='w-full min-h-screen px-10 bg-teal-500 text-white'>
+		<div className='w-full h-screen px-10 bg-teal-500 text-white'>
 			<div className='text-center mx-auto max-w-4xl space-y-5 text-xl md:text-3xl pt-96'>
 				<h1 className='text-6xl md:text-8xl font-extrabold'>
 					Webpack Starter
@@ -23,3 +23,5 @@ export function App({}: {}) {
 		</div>
 	)
 }
+
+export default HomePage

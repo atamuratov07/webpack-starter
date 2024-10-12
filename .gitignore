@@ -20,7 +20,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-./node_modules
-./build
-./build-ssr
+/node_modules
+/build
+/build-ssr
 *.local
