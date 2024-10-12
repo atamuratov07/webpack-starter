@@ -1,14 +1,13 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { type ModuleOptions } from 'webpack'
-import type { BuildOptions } from './utils/types'
-import { BuildModes } from './utils/types'
+import { type ModuleOptions, type RuleSetRule as Loader } from 'webpack'
+import { type BuildOptions, BuildModes } from './utils/types'
 
 export function buildLoadersConfig(
 	options: BuildOptions
 ): ModuleOptions['rules'] {
 	const isDev = options.mode === BuildModes.DEV
 
-	const swcLoader = {
+	const swcLoader: Loader = {
 		test: /\.tsx?$/,
 		use: {
 			loader: 'swc-loader',
@@ -39,7 +38,7 @@ export function buildLoadersConfig(
 		},
 	}
 
-	const tailwindLoader = {
+	const tailwindLoader: Loader = {
 		test: /\.css$/i,
 		use: [
 			{
@@ -50,5 +49,13 @@ export function buildLoadersConfig(
 		],
 	}
 
-	return [swcLoader, tailwindLoader]
+	const assetLoader: Loader = {
+		test: /\.(png|jpe?g|gif|webp)$/i,
+		type: 'asset/resource',
+		// generator: {
+		// 	filename: 'img/[name].[hash][ext]',
+		// },
+	}
+
+	return [swcLoader, tailwindLoader, assetLoader]
 }

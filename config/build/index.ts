@@ -3,8 +3,7 @@ import { buildDevServerConfig } from './dev-server'
 import { buildLoadersConfig } from './loaders'
 import { buildPluginsConfig } from './plugins'
 import { buildResolversConfig } from './reslovers'
-import type { BuildOptions } from './utils/types'
-import { BuildModes } from './utils/types'
+import { type BuildOptions, BuildModes } from './utils/types'
 
 export function buildWebpackConfig(
 	options: BuildOptions
