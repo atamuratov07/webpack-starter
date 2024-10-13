@@ -1,5 +1,5 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { type ModuleOptions, type RuleSetRule as Loader } from 'webpack'
+import { type RuleSetRule as Loader, type ModuleOptions } from 'webpack'
 import { type BuildOptions, BuildModes } from './utils/types'
 
 export function buildLoadersConfig(
@@ -49,6 +49,30 @@ export function buildLoadersConfig(
 		],
 	}
 
+	const svgrLoader: Loader = {
+		test: /\.svg$/,
+		issuer: /\.[jt]sx?$/,
+		use: [
+			{
+				loader: '@svgr/webpack',
+				options: {
+					icon: true,
+					svgoConfig: {
+						plugins: [
+							{
+								name: 'addAttributesToSVGElement',
+								params: {
+									attributes: [{ fill: 'currentColor' }],
+								},
+							},
+							'cleanupIds',
+						],
+					},
+				},
+			},
+		],
+	}
+
 	const assetLoader: Loader = {
 		test: /\.(png|jpe?g|gif|webp)$/i,
 		type: 'asset/resource',
@@ -57,5 +81,5 @@ export function buildLoadersConfig(
 		// },
 	}
 
-	return [swcLoader, tailwindLoader, assetLoader]
+	return [swcLoader, tailwindLoader, assetLoader, svgrLoader]
 }

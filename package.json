@@ -3,11 +3,12 @@
 	"packageManager": "yarn@4.5.0",
 	"private": true,
 	"scripts": {
-		"build:prod": "webpack --env mode=production",
+		"build": "webpack --env mode=production",
 		"build:dev": "webpack --env mode=development",
 		"dev": "webpack serve --env mode=development port=5000"
 	},
 	"devDependencies": {
+		"@svgr/webpack": "^8.1.0",
 		"@swc/core": "^1.7.35",
 		"@types/node": "^22.7.5",
 		"@types/react": "^18",
