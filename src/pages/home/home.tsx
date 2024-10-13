@@ -1,8 +1,4 @@
-import bgImageUrl from '@/shared/assets/images/bg.png'
-
 function HomePage({}: {}) {
-	console.log(bgImageUrl)
-
 	return (
 		<div>
 			<h1 className='text-5xl md:text-8xl lg:text-9xl text-center mt-[30vh] font-extrabold'>

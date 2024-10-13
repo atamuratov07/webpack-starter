@@ -24,7 +24,8 @@ export function buildWebpackConfig(
 			rules: buildLoadersConfig(options),
 		},
 		resolve: buildResolversConfig(options),
-		devtool: isDev && 'inline-source-map',
+
+		devtool: isDev ? 'eval' : 'source-map',
 		devServer: buildDevServerConfig(options),
 	}
 }

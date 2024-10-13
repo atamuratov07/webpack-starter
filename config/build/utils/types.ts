@@ -3,6 +3,8 @@ export interface BuildPaths {
 	output: string
 	html: string
 	src: string
+	favicon: string
+	public: string
 }
 
 export const enum BuildModes {
