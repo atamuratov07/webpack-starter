@@ -25,6 +25,8 @@ export function buildLoadersConfig(
 					},
 					transform: {
 						react: {
+							development: isDev,
+							refresh: isDev,
 							runtime: 'automatic',
 						},
 					},
