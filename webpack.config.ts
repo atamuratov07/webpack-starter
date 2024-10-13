@@ -6,7 +6,7 @@ import { BuildModes } from './config/build/utils/types'
 
 interface EnvVars {
 	mode?: BuildMode
-	port: number
+	port?: number
 }
 
 export default (env: EnvVars) => {

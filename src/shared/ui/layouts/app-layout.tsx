@@ -2,6 +2,10 @@ import bgImageUrl from '@/shared/assets/images/bg.png'
 import { Link, Outlet } from 'react-router-dom'
 
 export function AppLayout({}: {}) {
+	if (__ENV_MODE__ === 'development') {
+		console.log('secret code: 123456789abcdefg')
+	}
+
 	return (
 		<div
 			style={{ backgroundImage: `url(${bgImageUrl})` }}

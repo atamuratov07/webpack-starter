@@ -1,6 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import { type Configuration } from 'webpack'
+import { DefinePlugin, type Configuration } from 'webpack'
 import { type BuildOptions, BuildModes } from './utils/types'
 
 export function buildPluginsConfig(
@@ -12,6 +12,9 @@ export function buildPluginsConfig(
 	const plugins: Configuration['plugins'] = [
 		new HtmlWebpackPlugin({
 			template: options.paths.html,
+		}),
+		new DefinePlugin({
+			__ENV_MODE__: JSON.stringify(options.mode),
 		}),
 	]
 
